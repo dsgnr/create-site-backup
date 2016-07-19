@@ -14,6 +14,7 @@ mkdir -p $BACKUPPATH/$SITE/$DATE
 cd /home/$SITE/public_html
 wp db export $BACKUPPATH/$SITE/$DATE/$SITE-$DATE.sql --allow-root
 tar -czf $BACKUPPATH/$SITE/$DATE/$SITE-$DATE.tar.gz $SITESTORE/$SITE
+find $BACKUPPATH/$SITE -type f -mtime +2 -exec rm -rf {} \;
 done
 
-find $BACKUPPATH/$SITE/$DATE -type f -mtime +2 -exec rm {} \;
+
