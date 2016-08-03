@@ -3,7 +3,7 @@
 # http://www.designsbytouch.co.uk
 # Created:   04/07/16
 
-DATE=`date +%Y-%m-%d`
+DATE=`date +%d-%m-%Y`
 SITESTORE=/home
 SITELIST=($(ls -lh $SITESTORE | awk '{print $9}'))
 BACKUPPATH=/backups
@@ -12,9 +12,8 @@ for SITE in ${SITELIST[@]};
 do
 mkdir -p $BACKUPPATH/$SITE/$DATE
 cd /home/$SITE/public_html
-wp db export $BACKUPPATH/$SITE/$DATE/$SITE-$DATE.sql --allow-root
+sudo wp db export $BACKUPPATH/$SITE/$DATE/$SITE-$DATE.sql --allow-root
 tar -czf $BACKUPPATH/$SITE/$DATE/$SITE-$DATE.tar.gz $SITESTORE/$SITE
-find $BACKUPPATH/$SITE -type f -mtime +2 -exec rm -rf {} \;
+find $BACKUPPATH/$SITE -mindepth 1 -maxdepth 1 -type d -cmin +120 | xargs rm -rf
+echo "find $BACKUPPATH/$SITE -mindepth 1 -maxdepth 1 -type d -cmin +120 | xargs$
 done
-
-
