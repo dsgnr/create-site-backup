@@ -15,5 +15,5 @@ cd $SITESTORE/$SITE/public_html
 sudo wp db export $BACKUPPATH/$SITE/$DATE/$SITE-$DATE.sql --allow-root
 tar -czf $BACKUPPATH/$SITE/$DATE/$SITE-$DATE.tar.gz $SITESTORE/$SITE
 find $BACKUPPATH/$SITE -mindepth 1 -maxdepth 1 -type d -cmin +120 | xargs rm -rf
-echo "find $BACKUPPATH/$SITE -mindepth 1 -maxdepth 1 -type d -cmin +120 | xargs$
+echo "find $BACKUPPATH/$SITE -mindepth 1 -maxdepth 1 -type d -cmin +120 | xargs rm -rf"
 done
