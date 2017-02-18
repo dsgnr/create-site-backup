@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # @author: Daniel Hand
 # http://www.designsbytouch.co.uk
+# Modified from https://guides.wp-bullet.com/autoupdate-wordpress-site-plugins-wp-cli-bash-script-cronjob/
 # Created:   04/07/16
 
 DATE=`date +%d-%m-%Y`
